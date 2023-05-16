@@ -1,2 +1,11 @@
 *.ipynb_checkpoints
 *.venv
+
+# Latex
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.toc
