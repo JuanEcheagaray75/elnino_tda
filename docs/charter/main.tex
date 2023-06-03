@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[letterpaper, top=0.78in, bottom=0.78in, left=0.98in, right=0.98in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{soul}
+\usepackage{tabularx}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{authblk}
+
+\decimalpoint
+\renewcommand{\baselinestretch}{1.5}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% \author{
+%     Francisco Castorena Salazar\\
+%     \texttt{A00827756@tec.mx}
+%     \and
+%     Juan Pablo Echeagaray González\\
+%     \texttt{A00830646@tec.mx}
+%     \and
+%     Emily Rebeca Méndez Cruz\\
+%     \texttt{A00830768@tec.mx}
+%     \and
+%     Eugenio Morales Ortiz\\
+%     \texttt{A01734612@tec.mx}
+%     \and
+%     Mario Javier Soriano Aguilera\\
+%     \texttt{A01384282@tec.mx}
+% }
+
+\author{Francisco Castorena Salazar}
+\author{Juan Pablo Echeagaray González}
+\author{Emily Rebeca Méndez Cruz}
+\author{José Eugenio Morales Ortiz}
+\author{Mario Javier Soriano Aguilera}
+\affil{Ing. en Ciencias de Datos y Matemáticas, Tec de Monterrey}
+
+\title{Planeación del Proyecto}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Trasfondo del negocio}
+
+        ClimateAi ha sido capaz de desarrollar algunas de las predicciones de clima más precisas del mundo por medio del uso de Inteligencia Artificial Avanzada y modelos climáticos. Esto con el objetivo de ayudar a distintos grupos, individuos y entidades a crear resiliencia climática.
+
+        Con el propósito de apoyar en su misión, el equipo buscará implementar técnicas de TDA (\emph{Topological Data Analysis}) para la realización de un análisis exploratorio de datos del fenómeno El Niño.
+
+    \section{Alcance}
+
+        \begin{table}[!htbp]
+            \centering
+            \setlength\extrarowheight{2pt}
+            \scalebox{0.9}{
+            \begin{tabularx}{\textwidth}{ |X|X|X| }
+                \hline
+                Objetivo & Meta & Justificación \\
+                \hline
+                Búsqueda de periodicidad en los datos mediante técnicas de TDA & Sí/No & La información sobre la existencia de la periodicidad en los datos nos permite el poder hacer uso de herramientas de ML para la predicción de cuestiones climatológicas \\
+                \hline
+                Reconocimiento de patrones en los datos proporcionados & Sí/No & El análisis de patrones podría revelar anomalías en las mediciones que de otra manera pasarían desapercibidas \\
+                \hline
+                Predicción de anomalías Nino3.4 mediante un modelo de ML informado por features de TDA & Coeficiente de determinación superior a 80\%, MAPE menor al 20\% & Se espera que el modelo a implementar pueda predecir fielmente las tendencias de alza o decremento de anomalías, sirviendo como un indicador general del fenómeno \\
+                \hline
+                Preparación de la documentación oficial sobre la investigación de los resultados obtenidos & Reporte técnico y presentación ejecutiva & Documentación necesaria para replicar los resultados obtenidos \\
+                \hline
+            \end{tabularx}
+            }
+        \end{table}
+
+    \section{Personal}
+
+        El presente proyecto ha sido desarrollado por parte del Tec de Monterrey como un proyecto para ClimateAi:
+        \begin{itemize}
+            \item \textbf{Tec de Monterrey}
+            \begin{itemize}
+                \item Científico de Datos, Líder de Proyecto: Juan Pablo Echeagaray González
+                \item Científico de Datos: Francisco Castorena Salazar
+                \item Investigador: José Eugenio Morales Ortiz
+                \item Investigador: José Eugenio Morales Ortiz
+                \item Científico de Datos: Mario Javier Soriano Aguilera
+            \end{itemize}
+            \item \textbf{ClimateAi}
+            \begin{itemize}
+                \item Científico de Datos, CTO: Max Evans
+                \item Científico de Datos: Alitzel Macías
+            \end{itemize}
+        \end{itemize}
+
+    \section{Métricas}
+
+        El proyecto buscará definir si existe periodicidad en las mediciones de temperaturas de El Niño así como en sus anomalías. Dicha periodicidad puede ser cuantificada y representada mediante técnicas de homología persistente.
+
+        Se hará uso del método de clusterización \emph{Mapper} para detectar patrones inherentes en las mediciones de anomalías de El Niño 3.4; dicho análisis es de naturaleza cualitativa, por lo que los patrones encontrados estarán sujetos a una inspección más detallada.
+
+        Se implementará un modelo de ML para la predicción de anomalías de El Niño 3.4. Dicho modelo será informado por características obtenidas de TDA, por lo que se espera que el modelo sea capaz de predecir las anomalías con un coeficiente de determinación superior a 80\% y un MAPE menor al 20\%.
+
+    \section{Planeación}
+
+        \begin{itemize}
+            \item Limpieza de bases de datos
+            \begin{itemize}
+                \item Procesamiento de archivo \texttt{pickle} de anomalías de El Niño 3.4 proporcionado por el equipo de ClimateAi
+                \item Descarga y procesamiento de mediciones de El Niño para distintas regiones del Pacífico del sitio oficial de la NOAA
+            \end{itemize}
+            \item Análisis de Periodicidad: Uso de homología persistente para estimar la presencia de elipticidad en las mediciones de todas las variables en los datos de la NOAA
+            \item Análisis de Patrones: Uso de \emph{Mapper} para la detección de patrones en las mediciones de anomalías de El Niño 3.4
+            \item Predicción de Anomalías: Implementación de un modelo de ML para la predicción de anomalías de El Niño 3.4
+        \end{itemize}
+
+    \section{Arquitectura}
+
+        \begin{itemize}
+            \item Datos:
+            \begin{itemize}
+                \item Archivo \texttt{nino34.long.anom.data.txt} obtenido de \href{https://github.com/ClimateAI/TDA_ClimateAI/blob/main/nino34.long.anom.data.txt}{aquí}
+                \item Datos de NOAA obtenido de \href{https://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices}{aquí}
+            \end{itemize}
+            \item Herramientas:
+            \begin{itemize}
+                \item Google Collaboratory: Entorno de desarrollo en el que se programará la solución
+                \item GitHub: Sitio donde se alojará un repositorio del código fuente implementado y la documentación técnica
+            \end{itemize}
+            \item Entregables:
+            \begin{itemize}
+                \item Código fuente del proyecto en formato \texttt{.ipynb}
+                \item Documentación técnica del proyecto en formato pdf
+                \item Presentación ejecutiva de resultados
+            \end{itemize}
+        \end{itemize}
+
+    \section{Comunicación}
+
+        Los avances del proyecto serán presentados de forma semanal al profesor supervisor designado cada viernes a partir del \textbf{19 de mayo del 2023}. El proyecto final será presentado al socio formador el \textbf{16 de junio del 2023} durante una sesión de Zoom. En caso de requerir información más detallada del proyecto, contactar a las siguientes personas:
+        \begin{itemize}
+            \item \textbf{Tec de Monterrey}
+            \begin{itemize}
+                \item Líder del proyecto: Juan Pablo Echeagaray González, \texttt{a00830646@tec.mx}
+                \item Profesora supervisora: Lilia Alanís López, \texttt{lilia.alanislpz@tec.mx}
+            \end{itemize}
+            \item \textbf{ClimateAi}
+            \begin{itemize}
+                \item Alitzel Macías, \texttt{alitzel@climate.ai}
+            \end{itemize}
+        \end{itemize}
+\end{document}
